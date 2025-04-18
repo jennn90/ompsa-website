@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="login.css">
+    <script type="module" src="register.js" defer></script>
+
+</head>
+<body>
+        <div class="register-container">
+             <p class="account-text">Already have an account? <a href="login.html">Login here</a></p>
+
+        <button type="button" class="google-btn" id="google-login-btn">
+        <img src="images/google-logo.webp" alt="Google Logo" class="google-logo">
+        Sign up with Google
+        </button>
+
+        <p class="or-text">-------- OR CONTINUE WITH --------</p>
+
+        <!-- Register Form -->
+        <form id="registerForm">
+            <input type="email" placeholder="Email" id="email" required>
+            <p class="error-message" id="emailError"></p>
+
+            <input type="password" placeholder="Password" id="password" required>
+            <p class="error-message" id="passwordError"></p>
+
+            <button type="submit" class="register-btn">CREATE ACCOUNT</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OMPSA School Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+      opacity: 0.21;
+      z-index: -1;
+      background-color: white;
+    }
+
+    header {
+      background-color: #1e3a8a;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1002;
+      height: 60px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+    }
+
+    .profile img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    #toggle {
+      display: none;
+    }
+
+    .hamburger {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 30px;
+      height: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 1001;
+      cursor: pointer;
+      margin-top: 50px;
+    }
+
+    .hamburger span {
+      height: 4px;
+      width: 100%;
+      background-color: #333;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 60px;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #60d5e7;
+      color: white;
+      padding: 40px 20px 20px;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgb(24, 23, 23);
+      text-decoration: none;
+      margin: 15px 0;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 24px;
+      font-weight: 500;
+      transition: background 0.2s;
+      font-family: 'Times New Roman', Times, serif;
+      letter-spacing: 0.2px;
+      line-height: 0.3;
+      text-align: left;
+    }
+
+    .sidebar a i {
+      margin-right: 10px;
+      color: #213766;
+    }
+
+    .sidebar a:hover {
+      background-color: #2f80a3;
+    }
+
+    .main-content {
+      padding: 40px 20px 20px 20px;
+      margin-left: 0;
+      transition: 0.3s;
+    }
+
+    #toggle:checked ~ .sidebar {
+      left: 0;
+    }
+
+    #toggle:checked ~ .main-content {
+      margin-left: 250px;
+    }
+
+    #toggle:checked + .hamburger span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    #toggle:checked + .hamburger span:nth-child(2) {
+      opacity: 0;
+    }
+
+    #toggle:checked + .hamburger span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .admin-contact {
+      font-size: 12px;
+      padding: 10px 20px;
+      color: #003b4a;
+      margin-top: 300px;
+    }
+
+    .breadcrumbs {
+      margin-top: 70px;
+      margin-left: 270px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 250px;
+    }
+
+    .main {
+      padding: 30px;
+      overflow-y: auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .announcement {
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .posted {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: left;
+    }
+
+    .announcement-item {
+      max-width: 100%;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+      margin: 0 auto;
+      height: 500px;
+    }
+
+    .announcement-item img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+    .calendar {
+  text-align: right;
+  margin-top: -400px;
+  margin-left: 1000px; /* Push the calendar a bit to the right */
+}
+
+.calendar img {
+  width: 100px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.calendar p {
+  color: #1c355e;
+  font-weight: bold;
+}
+
+.calendar iframe {
+  border: 0;
+  width: 200px;
+  height: 250px;
+}
+
+.posted-title {
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #1c355e;
+  margin-left: 30px; /* Slight right shift */
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>
+      <img src="https://scontent.fcrk3-4.fna.fbcdn.net/v/t39.30808-6/489968262_1871962910203940_2278342868189935120_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFMT_WR5OfifzwXR-2CGKPtVOUreYZN0FVU5St5hk3QVcJU5DIZcqzWIG1t_zq0yEgKTU3kkKQi_TW59_jH-3SR&_nc_ohc=IAcdjHxV1bkQ7kNvwGzEPFd&_nc_oc=AdlCzh2Qz1RsqAQRSbN6xZ7qA5DTd9qeyTMYgduGtA4f2nj1ZJoUz3oTE5l7JEt4qsY&_nc_zt=23&_nc_ht=scontent.fcrk3-4.fna&_nc_gid=Y0ek-GGZr1vb129ODoyqbA&oh=00_AfEtnYUzqU4se4bbkNhfqEMXw91Tk4D5n_8ayU1JPA6H7g&oe=67FE37B6" alt="Logo" width="30" height="30">
+      OUR MOTHER OF PERPETUAL SUCCOR ACADEMY
+    </h1>
+    <div class="profile">
+      <img src="images/CARMINA.png" alt="Profile">
+      <span>ROSAS, CARMINA M.</span>
+    </div>
+  </header>
+
+  <input type="checkbox" id="toggle">
+  <label class="hamburger" for="toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
+  <div class="sidebar">
+    <a href="Home.html"><i class="fas fa-house"></i> Home</a>
+    <a href="Photos.html"><i class="fas fa-image"></i> Photos</a>
+    <a href="Videos.html"><i class="fas fa-video"></i> Videos</a>
+    <a href="Prayers.html"><i class="fas fa-hands-praying"></i> Prayers</a>
+   
+  </div>
+
+  <div class="breadcrumbs">
+    <a href="#">Home</a> &gt; Academic Offerings
+  </div>
+
+  <div class="content">
+    <div class="main">
+      <div class="announcement">
+        <h2>📢 Posted Announcements</h2>
+        <div class="posted">
+          <div class="announcement-item">
+            <p>Don't forget the upcoming retreat on April 18!</p>
+            <img src="images/retreat.jpeg" alt="Retreat">
+          </div>
+        </div>
+      </div>
+      <div class="calendar" id="calendar">
+        <iframe src="https://calendar.google.com/calendar/embed?src=en.philippines%23holiday%40group.v.calendar.google.com&ctz=Asia/Manila">
+        </iframe>
+      </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="login.css">
+    <script type="module" src="login.js" defer></script> 
+
+</head>
+<body>    
+        <div class="login-container">
+            <p class="account-text">Don't have an account? <a href="register.html">Sign in here</a></p>
+            
+        <button type="button" class="google-btn" id="google-login-btn">
+        <img src="images/google-logo.webp" alt="Google Logo" class="google-logo">
+        Sign up with Google
+        </button>
+
+        <p class="or-text">-------- OR CONTINUE WITH --------</p>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+            <input type="email" placeholder="Email" id="email">
+            <p class="error-message" id="emailError"></p>
+        
+            <input type="password" placeholder="Password" id="password">
+            <p class="error-message" id="passwordError"></p>
+        
+            <!-- Remember Me & Forgot Password -->
+            <div class="remember-forgot">
+                <label>
+                    <input type="checkbox" id="remember-me"> Remember Me
+                </label>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+            
+        
+            <button type="submit" class="login-btn">LOGIN</button>
+        </form>
+    </div>
+</body>
+</html>

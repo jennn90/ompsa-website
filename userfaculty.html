@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OMPSA School Portal</title>
+  <link rel="stylesheet" href="adminfaculty.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDFeHkyhAV9wUFToVbtoLQ_9-RiaiacJdY",
+      authDomain: "login-43a6c.firebaseapp.com",
+      projectId: "login-43a6c",
+      storageBucket: "login-43a6c.appspot.com", 
+      messagingSenderId: "777443964366",
+      appId: "1:777443964366:web:ff0969c479535e40d8279f"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Function to add a card
+    function addCard(sectionId) {
+      const container = document.getElementById(sectionId);
+      if (!container) {
+        alert(`No container found with ID: ${sectionId}`);
+        return;
+      }
+
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="https://via.placeholder.com/100" onclick="this.nextElementSibling.click()" alt="New Person">
+        <input type="file" accept="image/*" onchange="changePicture(this)">
+        <div class="name" contenteditable="true">New Name</div>
+        <div class="position" contenteditable="true">Position</div>
+        <div class="btn-container">
+          <button class="edit-btn" onclick="toggleEdit(this)">Save</button>
+          <button class="delete-btn" onclick="deleteCard(this)">Delete</button>
+        </div>
+      `;
+      container.appendChild(card);
+    }
+
+    // Function to toggle edit mode
+    function toggleEdit(button) {
+      const card = button.closest('.card');
+      const nameEl = card.querySelector('.name');
+      const positionEl = card.querySelector('.position');
+      const editing = nameEl.isContentEditable;
+
+      nameEl.contentEditable = !editing;
+      positionEl.contentEditable = !editing;
+
+      button.textContent = editing ? 'Edit' : 'Save';
+    }
+
+    // Function to delete a card
+    function deleteCard(button) {
+      const card = button.closest('.card');
+      card.remove();
+    }
+
+    // Function to change profile picture
+    function changePicture(input) {
+      const file = input.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          input.previousElementSibling.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // Make functions accessible globally (for inline `onclick`)
+    window.addCard = addCard;
+    window.toggleEdit = toggleEdit;
+    window.deleteCard = deleteCard;
+    window.changePicture = changePicture;
+  </script>
+</head>
+<body>
+  <!-- Toggle Button -->
+  <input type="checkbox" id="toggle">
+  <label class="hamburger" for="toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <a href="#"><i class="fas fa-house"></i> Home</a>
+    <a href="#"><i class="fas fa-image"></i> Photos</a>
+    <a href="#"><i class="fas fa-video"></i> Videos</a>
+    <a href="#"><i class="fas fa-hands-praying"></i> Prayers</a>
+    <div class="admin-contact">
+      Admin Contact:<br>OMPSA@gmail.com
+    </div>
+  </div>
+
+
+  
+  <div class="breadcrumbs">
+    <a href="#">Home</a> &gt; Announcement
+  </div>
+  
+  <!-- Main Content -->
+  <div class="main-content">
+    <header>
+      <h1>
+        <img src="images/logo ompsa.png" alt="Logo" width="30" height="30">
+        OUR MOTHER OF PERPETUAL SUCCOR ACADEMY
+      </h1>
+      <div class="profile">
+        <img src="images/CARMINA.png" alt="Profile">
+        <span>ROSAS, CARMINA M.</span>
+      </div>
+    </header>
+
+    <div class="content">
+    
+        <div class="faculty-section">
+          <h3>Administrator</h3>
+          <div class="faculty-container" id="admin-section">
+            <div class="card">
+              <img src="images/FATHER JOVIN.jpg" alt="Admin Photo">
+              <div class="name">FR. JOVIN GRIMALDO </div>
+              <div class="position">School Director</div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="faculty-section">
+          <h3>Faculty</h3>
+          <div class="faculty-container" id="faculty-section">
+            <div class="card">
+              <img src="images/FRIAS.jpg" alt="Faculty Photo">
+              <div class="name">Mr. ALFRED FRIAS</div>
+              <div class="position">Grade 12 Adviser</div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="faculty-section">
+          <h3>Staff</h3>
+          <div class="faculty-container" id="staff-section">
+            <div class="card">
+              <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Staff Photo">
+              <div class="name">Ms. Ana Santos</div>
+              <div class="position">Registrar</div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="faculty-section">
+          <h3>Former Director and Principals</h3>
+          <div class="faculty-container" id="former-section">
+            <div class="card">
+              <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Former Director Photo">
+              <div class="name">Sr. Theresa Villanueva, RVM</div>
+              <div class="position">Former Principal (2000–2010)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f4f4;
+  }
+
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: -1;
+  }
+
+  header {
+    background-color: #1e3a8a;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1002;
+    height: 60px;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+  }
+
+  .profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+
+  #toggle {
+    display: none;
+  }
+
+  .hamburger {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 30px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1001;
+    cursor: pointer;
+    margin-top: 50px;
+  }
+
+  .hamburger span {
+    height: 4px;
+    width: 100%;
+    background-color: #333;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 60px;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #60d5e7;
+    color: white;
+    padding: 40px 20px 20px;
+    transition: 0.3s;
+    z-index: 1000;
+  }
+
+  .sidebar a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    color: rgb(24, 23, 23);
+    text-decoration: none;
+    margin: 15px 0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: 500;
+    transition: background 0.2s;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .sidebar a:hover {
+    background-color: #2f80a3;
+  }
+
+  .main-content {
+    padding: 40px 20px 20px 20px;
+    margin-left: 50px;
+    transition: 0.3s;
+    margin-top: 10px;
+  }
+
+  #toggle:checked ~ .sidebar {
+    left: 0;
+  }
+
+  #toggle:checked ~ .main-content {
+    margin-left: 250px;
+  }
+
+  .admin-contact {
+    font-size: 12px;
+    padding: 10px 20px;
+    color: #003b4a;
+    margin-top: 300px;
+  }
+
+
+
+  .breadcrumbs {
+      margin-top: 70px;
+      margin-left: 270px;
+      font-size: 14px;
+      color: #333;
+    }
+
+  h2 {
+    color: #21386e;
+    margin-bottom: 15px;
+    margin-top: 50px;
+  }
+
+  .faculty-section {
+    margin-bottom: 40px;
+  }
+
+  .faculty-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .card {
+    background-color: #f2f6ff;
+    border-radius: 12px;
+    padding: 20px;
+    width: 200px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    padding-bottom: 50px;
+  }
+
+  .card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .card input[type="file"] {
+    display: none;
+  }
+
+  .name {
+    font-weight: 700;
+    color: #21386e;
+  }
+
+  .position {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .edit-btn, .delete-btn {
+    background-color: #21386e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    margin: 2px;
+  }
+
+  .delete-btn {
+    background-color: #ff4d4d;
+  }
+
+  .card .btn-container {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .name[contenteditable], .position[contenteditable] {
+    background-color: #e0eaff;
+    border-radius: 4px;
+    padding: 2px;
+  }
+
+  .add-btn {
+    margin-top: 15px;
+    padding: 6px 12px;
+    background-color: #21386e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+</style>

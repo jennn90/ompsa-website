@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image:url('images/OMPSA.bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+
+}
+
+.login-container {
+    background-color:rgba(37, 65, 114, 0.7); /* 70% opaque (30% transparent) */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    width: 280px;
+    height: 310px;
+    text-align: center;
+    margin-top: 150px;
+}
+.register-container {
+    background-color:rgba(37, 65, 114, 0.7); /* 70% opaque (30% transparent) */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    width: 280px;
+    height: 280px;
+    text-align: center;
+    margin-top: 150px;
+}
+
+.account-text {
+    color: white;
+    font-size: 13px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.account-text a {
+    color: #24b0e1;
+    text-decoration: none;
+
+}
+
+.account-text a:hover {
+    text-decoration: underline;
+    transition: text-decoration 0.2s ease;
+}
+
+
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 270px;
+    margin: 8px auto;
+    border: 1px solid #ccc;
+}
+
+.google-btn:hover {
+    background-color:rgb(60, 77, 83);
+    color: white;
+    border: 1px solid white;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.google-logo {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.or-text {
+    color: white;
+    font-size: 8px;
+    margin: 10px 0;
+}
+
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid white;
+    border-radius: 4px;
+    background: transparent;
+    color: white;
+}
+
+input::placeholder {
+    color: white;
+}
+
+.login-btn, .register-btn {
+    background-color: #24b0e1;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.login-btn:hover, .register-btn:hover {
+  background-color: white;
+  color: #24b0e1;
+  border: 1px solid #24b0e1;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+/* Error Message Styling */
+.error-message {
+    color: red;
+    font-size: 10px;
+    margin: 1px;
+    display: none; /* Hidden by default */
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    margin: 5px 0;
+}
+
+.remember-forgot label {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.remember-forgot input {
+    accent-color: #24b0e1; /* Change checkbox color */
+}
+
+.forgot-password {
+    color: #24b0e1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+    
+}

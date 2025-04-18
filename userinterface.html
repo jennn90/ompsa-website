@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OMPSA School Portal</title>
+  <link rel="stylesheet" href="userinterface.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="module" src="userinterface.js" defer></script> 
+</head>
+<body>
+
+ <!-- Toggle Button -->
+ <input type="checkbox" id="toggle">
+ <label class="hamburger" for="toggle">
+   <span></span>
+   <span></span>
+   <span></span>
+ </label>
+ 
+ 
+  <!-- sidebar -->
+ <div class="sidebar">
+     <a href="#"><i class="fas fa-house"></i> Home</a>
+     <a href="#"><i class="fas fa-image"></i> Photos</a>
+     <a href="#"><i class="fas fa-video"></i> Videos</a>
+     <a href="#"><i class="fas fa-hands-praying"></i> Prayers</a>
+   <div class="admin-contact">
+     Admin Contact:<br>
+     OMPSA@gmail.com
+ </div>
+ </div>
+
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header>
+      <h1>
+        <img src="images/logo ompsa.png" alt="Logo" width="30" height="30">
+        OUR MOTHER OF PERPETUAL SUCCOR ACADEMY
+      </h1>
+      <!-- Profile Icon (Top Right) -->
+      <div class="profile" id="profileBtn">
+        <img src="images/CARMINA.png" alt="Profile">
+        <span id="username">Loading...</span>
+      </div>
+
+      <!-- Sidebar Panel -->
+      <div id="profilePanel" class="profile-panel">
+        <div class="panel-header">
+          <h2>Account</h2>
+        </div>
+        <div class="panel-content">
+          <img id="profilePic" src="profile.jpg" alt="Profile Picture">
+          <input type="file" id="profilePicInput" accept="image/*">
+          <input type="text" id="usernameInput" placeholder="Your name">
+          <button id="saveChangesBtn">Save</button>
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="search-bar">
+        <img src="images/searchicon.png" class="search-icon" alt="Search">
+        <input type="text" placeholder="Search...">
+      </div>
+
+      <div class="top-icons">
+        <div class="icon-wrapper">
+          <div class="icon-box">
+            <a href="history.html">
+              <img src="images/history logo.png" width="40" height="40">
+            </a>
+          </div>
+          <div class="label">History</div>
+        </div>
+
+        <div class="icon-wrapper">
+          <div class="icon-box">
+            <a href="Faculty.html">
+              <img src="images/Faculty logo.png" width="40" height="40">
+            </a>
+          </div>
+          <div class="label">Faculty a...</div>
+        </div>
+
+        <div class="icon-wrapper">
+          <div class="icon-box">
+            <a href="Announcement.html">
+              <img src="images/announcement logo.png" width="40" height="40">
+            </a>
+          </div>
+          <div class="label">Announc...</div>
+        </div>
+
+        <div class="icon-wrapper">
+          <div class="icon-box">
+            <a href="Achievements.html">
+              <img src="images/achievement logo.png" width="40" height="40">
+            </a>
+          </div>
+          <div class="label">Achieve...</div>
+        </div>
+
+        <div class="icon-wrapper">
+          <div class="icon-box">
+            <a href="Academic Offerings.html">
+              <img src="images/acadofferings logo.png" width="40" height="40">
+            </a>
+          </div>
+          <div class="label">Academic O...</div>
+        </div>
+      </div>
+
+      <div class="mission-vision">
+      <div class="mv-box">
+        <h2>MISSION</h2>
+        <p>The Diocesan Catholic Schools of Marinduque are committed to develop Christ-centered individuals through Relevant and Quality Catholic Education and involvement in the Life and Mission of the Church.</p>
+      </div>
+    
+      <div class="mv-box">
+        <h2>VISION</h2>
+        <p>The Diocesan Catholic Schools of Marinduque envision an Evangelized Community promoting Justice, Charity and Peace in the constant pursuit for Excellence.</p>
+      </div>
+    </div>
+    
+    </div>
+  </div>
+</body>
+</html        
